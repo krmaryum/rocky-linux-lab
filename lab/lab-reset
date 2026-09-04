@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# labuser runs this command normally.
+# Only this specific reset command elevates to root.
+if [[ "$EUID" -ne 0 ]]; then
+    exec sudo /usr/local/bin/lab-reset
+fi
+
+echo "============================================================"
+echo "              RESETTING LINUX PRACTICE LAB"
+echo "============================================================"
+
+LAB_DIR="/home/labuser/linux-practice"
+
+# Safety check before destructive reset
+if [[ "$LAB_DIR" != "/home/labuser/linux-practice" ]]; then
+    echo "ERROR: Unexpected lab directory. Reset aborted."
+    exit 1
+fi
+
+RESET_MODE=1 /usr/local/lib/rocky-linux-lab/linux-practice.sh
+
+# Always return the practice lab to labuser
+chown -R labuser:labuser "$LAB_DIR"
+
+echo ""
+echo "Lab has been restored successfully."
+echo "Owner: labuser"
+echo "Location: $LAB_DIR"
+echo ""
+echo "Run:"
+echo "  cd /home/labuser/linux-practice"
+echo "============================================================"

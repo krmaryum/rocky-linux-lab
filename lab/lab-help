@@ -1,0 +1,113 @@
+#!/bin/bash
+
+cat <<'HELP'
+============================================================
+              ROCKY LINUX STUDENT PRACTICE LAB
+============================================================
+
+Lab location:
+  /home/labuser/linux-practice
+
+Full practice guide:
+  less /home/labuser/linux-practice/README.md
+
+Quick start:
+  cd /home/labuser/linux-practice
+  pwd
+  ls -lah
+  tree
+
+------------------------------------------------------------
+FILES AND DIRECTORIES
+------------------------------------------------------------
+  pwd
+  ls -lah
+  cd
+  mkdir
+  touch
+  cp
+  mv
+  rm
+
+------------------------------------------------------------
+VIEW FILE CONTENT
+------------------------------------------------------------
+  cat
+  less
+  head
+  tail
+
+------------------------------------------------------------
+SEARCH AND TEXT PROCESSING
+------------------------------------------------------------
+  find
+  grep
+  cut
+  sort
+  uniq
+  tr
+  awk
+  sed
+
+------------------------------------------------------------
+USERS AND PERMISSIONS
+------------------------------------------------------------
+  whoami
+  id
+  groups
+  chmod
+  chown
+  sudo
+
+------------------------------------------------------------
+PROCESSES AND MEMORY
+------------------------------------------------------------
+  ps -ef
+  top
+  free -h
+  vmstat
+
+------------------------------------------------------------
+DISK AND FILESYSTEM
+------------------------------------------------------------
+  df -h
+  du -sh
+  lsblk
+
+------------------------------------------------------------
+NETWORKING
+------------------------------------------------------------
+  ip -br addr
+  ip route
+  ss -tulpn
+  ping
+  curl
+  wget
+  dig
+  nslookup
+
+------------------------------------------------------------
+ARCHIVES AND COMPRESSION
+------------------------------------------------------------
+  tar
+  gzip
+  zip
+  unzip
+
+------------------------------------------------------------
+LAB COMMANDS
+------------------------------------------------------------
+  lab-help
+      Show this help screen.
+
+  lab-reset
+      Restore the Linux practice lab to its original state.
+
+Important:
+  Changes inside /home/labuser/linux-practice are for practice.
+  Run lab-reset whenever you want a fresh copy of the lab.
+
+============================================================
+                    HAPPY PRACTICING!
+============================================================
+HELP
