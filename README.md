@@ -47,7 +47,7 @@ You do **not** need to install Rocky Linux manually.
 ## 1. Pull the Docker Image
 
 ```bash
-docker pull krmaryum/rocky-linux-lab:4.2
+docker pull krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ## 2. Run the Lab for the First Time
@@ -56,7 +56,7 @@ docker pull krmaryum/rocky-linux-lab:4.2
 docker run -it \
   --name rocky-linux-lab \
   --hostname rocky-lab \
-  krmaryum/rocky-linux-lab:4.2
+  krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ## 3. Switch to the Student User
@@ -107,8 +107,10 @@ krmaryum/rocky-linux-lab
 
 Stable classroom release:
 
+Stable classroom versions should not be overwritten after students begin using them.
+
 ```text
-krmaryum/rocky-linux-lab:4.2
+krmaryum/rocky-linux-lab:4.2.1
 ```
 
 Current stable tag:
@@ -157,13 +159,13 @@ This keeps the student environment consistent even when future versions are rele
 ## Windows PowerShell
 
 ```powershell
-docker pull krmaryum/rocky-linux-lab:4.2
+docker pull krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ## Linux / WSL / Bash
 
 ```bash
-docker pull krmaryum/rocky-linux-lab:4.2
+docker pull krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ---
@@ -173,7 +175,7 @@ docker pull krmaryum/rocky-linux-lab:4.2
 ## Windows PowerShell
 
 ```powershell
-docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2
+docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ## Linux / WSL / Bash
@@ -182,7 +184,7 @@ docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-
 docker run -it \
   --name rocky-linux-lab \
   --hostname rocky-lab \
-  krmaryum/rocky-linux-lab:4.2
+  krmaryum/rocky-linux-lab:4.2.1
 ```
 
 The container starts with a welcome screen explaining how to begin.
@@ -918,7 +920,7 @@ Then create a fresh container:
 docker run -it \
   --name rocky-linux-lab \
   --hostname rocky-lab \
-  krmaryum/rocky-linux-lab:4.2
+  krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ---
@@ -1048,19 +1050,21 @@ The project follows simple versioning:
 → previous stable classroom release
 
 4.2
+→ introduced split-screen practice mode
+→ published for linux/arm64
+
+4.2.1
 → current stable classroom release
+→ multi-platform: linux/amd64 + linux/arm64
 
 latest
 → current newest stable release
 ```
-
-Stable classroom versions should not be overwritten after students begin using them.
-
 ---
 
 # 🖥️ Built-in Split-Screen Practice Mode
 
-Version `4.2` includes the `lab-start` command.
+Version `4.2` introduced the `lab-start` command, and it remains available in `4.2.1`.
 
 Run:
 
@@ -1124,7 +1128,7 @@ krmaryum/rocky-linux-lab
 Recommended classroom image:
 
 ```text
-krmaryum/rocky-linux-lab:4.2
+krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ---

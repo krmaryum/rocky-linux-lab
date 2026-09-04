@@ -38,6 +38,15 @@ linux-practice/
 
 # ⚙️ Requirements
 
+## Supported Architectures
+
+Version `4.2.1` supports:
+
+- `linux/amd64` — Intel / AMD computers
+- `linux/arm64` — ARM-based computers
+
+Docker automatically selects the correct image for your system.
+
 - Docker installed and running
 - Terminal / command-line access
 
@@ -51,13 +60,13 @@ You do not need to clone the repository or run the setup script manually.
 ## 1️⃣ Pull the Image
 
 ```bash
-docker pull krmaryum/rocky-linux-lab:4.2
+docker pull krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ## 2️⃣ Start the Lab
 
 ```bash
-docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2
+docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2.1
 ```
 
 ## 3️⃣ Practice as labuser

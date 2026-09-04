@@ -2,7 +2,7 @@ FROM rockylinux:9
 
 LABEL org.opencontainers.image.title="Rocky Linux Student Practice Lab"
 LABEL org.opencontainers.image.description="Rocky Linux 9 hands-on Linux administration lab for students"
-LABEL org.opencontainers.image.version="4.2"
+LABEL org.opencontainers.image.version="4.2.1"
 
 # ------------------------------------------------------------
 # Install Linux administration and troubleshooting tools
