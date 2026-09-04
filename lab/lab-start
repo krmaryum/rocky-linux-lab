@@ -1,0 +1,71 @@
+#!/bin/bash
+
+set -euo pipefail
+
+LAB_DIR="/home/labuser/linux-practice"
+SESSION_NAME="rocky-linux-lab"
+
+# ------------------------------------------------------------
+# Always run the split-screen lab as labuser
+# ------------------------------------------------------------
+if [[ "$(whoami)" == "root" ]]; then
+    exec su - labuser -c "/usr/local/bin/lab-start"
+fi
+
+# ------------------------------------------------------------
+# Make sure the practice directory exists
+# ------------------------------------------------------------
+if [[ ! -d "$LAB_DIR" ]]; then
+    echo "ERROR: Practice lab not found:"
+    echo "  $LAB_DIR"
+    exit 1
+fi
+
+cd "$LAB_DIR"
+
+# ------------------------------------------------------------
+# Do not create another tmux session from inside tmux
+# ------------------------------------------------------------
+if [[ -n "${TMUX:-}" ]]; then
+    echo "You are already inside the Rocky Linux practice session."
+    exit 0
+fi
+
+# ------------------------------------------------------------
+# Reconnect to an existing practice session if one exists
+# ------------------------------------------------------------
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    exec tmux attach-session -t "$SESSION_NAME"
+fi
+
+# ------------------------------------------------------------
+# Create LEFT pane: README / practice guide
+# ------------------------------------------------------------
+tmux new-session -d \
+    -s "$SESSION_NAME" \
+    -c "$LAB_DIR" \
+    "bash -lc 'less README.md; exec bash'"
+
+# ------------------------------------------------------------
+# Create RIGHT pane: student practice shell
+# ------------------------------------------------------------
+tmux split-window -h \
+    -p 50 \
+    -t "${SESSION_NAME}:0" \
+    -c "$LAB_DIR"
+
+# Enable mouse support for easier pane selection and scrolling
+tmux set-option -t "$SESSION_NAME" mouse on
+
+# Clear the practice shell after Bash startup messages
+tmux send-keys \
+    -t "${SESSION_NAME}:0.1" \
+    "clear" C-m
+
+# Put keyboard focus on the RIGHT practice pane
+tmux select-pane -t "${SESSION_NAME}:0.1"
+
+# ------------------------------------------------------------
+# Attach student to the split-screen practice session
+# ------------------------------------------------------------
+exec tmux attach-session -t "$SESSION_NAME"

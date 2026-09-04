@@ -2,7 +2,7 @@ FROM rockylinux:9
 
 LABEL org.opencontainers.image.title="Rocky Linux Student Practice Lab"
 LABEL org.opencontainers.image.description="Rocky Linux 9 hands-on Linux administration lab for students"
-LABEL org.opencontainers.image.version="4.1"
+LABEL org.opencontainers.image.version="4.2"
 
 # ------------------------------------------------------------
 # Install Linux administration and troubleshooting tools
@@ -31,6 +31,7 @@ RUN dnf -y install \
     traceroute \
     rsync \
     bash-completion \
+    tmux \
     ncurses \
     diffutils \
     cronie \
@@ -62,6 +63,9 @@ COPY --chmod=755 lab/lab-help \
 
 COPY --chmod=755 lab/lab-reset \
     /usr/local/bin/lab-reset
+
+COPY --chmod=755 lab/lab-start \
+    /usr/local/bin/lab-start
 
 COPY --chmod=755 lab/welcome.sh \
     /usr/local/bin/rocky-lab-welcome

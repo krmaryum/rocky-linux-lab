@@ -29,6 +29,74 @@ Then this image will appear automatically:
 
 ---
 
+# ✅ Prerequisites
+
+Before starting the lab, make sure you have:
+
+- Docker installed
+- Docker daemon / Docker Desktop running
+- Terminal or command-line access
+- Internet connection for the initial Docker image pull
+
+You do **not** need to install Rocky Linux manually.
+
+---
+
+# 🚀 Quick Start
+
+## 1. Pull the Docker Image
+
+```bash
+docker pull krmaryum/rocky-linux-lab:4.2
+```
+
+## 2. Run the Lab for the First Time
+
+```bash
+docker run -it \
+  --name rocky-linux-lab \
+  --hostname rocky-lab \
+  krmaryum/rocky-linux-lab:4.2
+```
+
+## 3. Switch to the Student User
+
+```bash
+su - labuser
+```
+
+## 4. Start Split-Screen Practice Mode
+
+```bash
+lab-start
+```
+
+The practice guide stays visible on the left while you run Linux commands on the right.
+
+---
+
+# 🔄 Starting the Lab Again
+
+After the container has already been created, start it with:
+
+```bash
+docker start -ai rocky-linux-lab
+```
+
+Then:
+
+```bash
+su - labuser
+lab-start
+```
+
+ Use `docker run` the first time.
+> Use `docker start -ai` when the container already exists.
+
+---
+
+---
+
 # 🚀 Docker Image
 
 Docker Hub image:
@@ -40,7 +108,7 @@ krmaryum/rocky-linux-lab
 Stable classroom release:
 
 ```text
-krmaryum/rocky-linux-lab:4.1
+krmaryum/rocky-linux-lab:4.2
 ```
 
 Current stable tag:
@@ -52,7 +120,7 @@ krmaryum/rocky-linux-lab:latest
 For classroom use, the versioned tag is recommended:
 
 ```text
-4.1
+4.2
 ```
 
 This keeps the student environment consistent even when future versions are released.
@@ -60,7 +128,7 @@ This keeps the student environment consistent even when future versions are rele
 ---
 
 # ✨ Main Features
-
+- Built-in split-screen practice mode with `lab-start`
 - Rocky Linux 9 userspace
 - Root administration access
 - Normal practice user: `labuser`
@@ -89,13 +157,13 @@ This keeps the student environment consistent even when future versions are rele
 ## Windows PowerShell
 
 ```powershell
-docker pull krmaryum/rocky-linux-lab:4.1
+docker pull krmaryum/rocky-linux-lab:4.2
 ```
 
 ## Linux / WSL / Bash
 
 ```bash
-docker pull krmaryum/rocky-linux-lab:4.1
+docker pull krmaryum/rocky-linux-lab:4.2
 ```
 
 ---
@@ -105,7 +173,7 @@ docker pull krmaryum/rocky-linux-lab:4.1
 ## Windows PowerShell
 
 ```powershell
-docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.1
+docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2
 ```
 
 ## Linux / WSL / Bash
@@ -114,7 +182,7 @@ docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-
 docker run -it \
   --name rocky-linux-lab \
   --hostname rocky-lab \
-  krmaryum/rocky-linux-lab:4.1
+  krmaryum/rocky-linux-lab:4.2
 ```
 
 The container starts with a welcome screen explaining how to begin.
@@ -649,6 +717,7 @@ dig
 nslookup
 traceroute
 rsync
+tmux
 file
 clear
 cmp
@@ -849,7 +918,7 @@ Then create a fresh container:
 docker run -it \
   --name rocky-linux-lab \
   --hostname rocky-lab \
-  krmaryum/rocky-linux-lab:4.1
+  krmaryum/rocky-linux-lab:4.2
 ```
 
 ---
@@ -904,6 +973,7 @@ rocky-linux-lab/
     ├── linux-practice.sh
     ├── lab-help
     ├── lab-reset
+    ├── lab-start
     └── welcome.sh
 ```
 
@@ -963,6 +1033,7 @@ During the Docker build, the student workbook is copied into:
 | `lab/linux-practice.sh` | Creates the practice environment |
 | `lab/lab-help` | Quick Linux command reference |
 | `lab/lab-reset` | Restores the practice environment |
+| `lab/lab-start` | Opens the tmux split-screen practice environment |
 | `lab/welcome.sh` | Displays startup instructions |
 | `.gitignore` | Prevents unnecessary files from entering Git |
 
@@ -974,30 +1045,30 @@ The project follows simple versioning:
 
 ```text
 4.1
-→ fixed stable classroom release
+→ previous stable classroom release
+
+4.2
+→ current stable classroom release
 
 latest
 → current newest stable release
-
-4.2
-→ future improvements
 ```
 
 Stable classroom versions should not be overwritten after students begin using them.
 
 ---
 
-# 🔮 Planned Improvement
+# 🖥️ Built-in Split-Screen Practice Mode
 
-A future version may include a built-in split-screen practice mode so students can keep the command guide visible while running commands in the same terminal.
+Version `4.2` includes the `lab-start` command.
 
-Possible future command:
+Run:
 
-```text
+```bash
 lab-start
 ```
 
-Concept:
+This opens:
 
 ```text
 ┌───────────────────────┬───────────────────────┐
@@ -1010,7 +1081,9 @@ Concept:
 └───────────────────────┴───────────────────────┘
 ```
 
-Until then, students can use the two-terminal method described above.
+The guide remains visible while the student runs commands in the practice shell.
+
+If the tmux session is detached, running `lab-start` again reconnects to the existing session.
 
 ---
 
@@ -1051,7 +1124,7 @@ krmaryum/rocky-linux-lab
 Recommended classroom image:
 
 ```text
-krmaryum/rocky-linux-lab:4.1
+krmaryum/rocky-linux-lab:4.2
 ```
 
 ---
@@ -1062,7 +1135,6 @@ Suggestions and improvements are welcome.
 
 Possible future improvements include:
 
-- split-screen practice mode
 - additional Linux troubleshooting exercises
 - networking labs
 - process troubleshooting labs

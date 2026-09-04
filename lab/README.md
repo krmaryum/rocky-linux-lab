@@ -51,36 +51,66 @@ You do not need to clone the repository or run the setup script manually.
 ## 1️⃣ Pull the Image
 
 ```bash
-docker pull krmaryum/rocky-linux-lab:4.1
+docker pull krmaryum/rocky-linux-lab:4.2
 ```
 
 ## 2️⃣ Start the Lab
 
 ```bash
-docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.1
+docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2
 ```
 
 ## 3️⃣ Practice as labuser
 
 ```bash
 su - labuser
-cd ~/linux-practice
 ```
 
-## 4️⃣ Open This Practice Guide
+## 4️⃣ Start Split-Screen Practice Mode
 
 ```bash
+lab-start
+```
+
+`lab-start` opens the practice environment in two panes:
+
+```text
+┌──────────────────────────────┬──────────────────────────────┐
+│ PRACTICE GUIDE               │ PRACTICE TERMINAL            │
+│                              │                              │
+│ README.md                    │ [labuser@rocky-lab]$         │
+│                              │                              │
+│ Read the commands here       │ Run the commands here        │
+│ while you practice.          │ and observe the output.      │
+└──────────────────────────────┴──────────────────────────────┘
+```
+
+The left pane keeps the Linux practice guide visible while the right pane is used for running commands.
+
+## Manual Practice Mode
+
+If you do not want to use split-screen mode:
+
+```bash
+cd ~/linux-practice
 less README.md
 ```
+
+Press `q` to exit the README viewer.
 
 ## Helpful Lab Commands
 
 ```bash
+lab-start
 lab-help
 lab-reset
 ```
 
-> `lab-reset` restores the practice environment to its original state.
+- `lab-start` — opens the split-screen practice environment.
+- `lab-help` — displays a quick Linux command reference.
+- `lab-reset` — restores the practice environment to its original state.
+
+---
 
 # ⚠️ Docker Lab Notes
 

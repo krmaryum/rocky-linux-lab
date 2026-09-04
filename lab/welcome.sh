@@ -27,14 +27,19 @@ echo
 if [[ "$CURRENT_USER" == "root" ]]; then
     echo "Recommended:"
     echo "  su - labuser"
+    echo "  lab-start"
+    echo
+    echo "Or manually:"
     echo "  cd ~/linux-practice"
     echo "  less README.md"
 else
     echo "Start here:"
+    echo "  lab-start"
+    echo
+    echo "Or manually:"
     echo "  cd ~/linux-practice"
     echo "  less README.md"
 fi
-
 echo
 echo "Inside README.md:"
 echo "  Read a section"
@@ -45,6 +50,7 @@ echo
 echo "Press q to exit the README viewer."
 echo
 echo "Helpful commands:"
+echo "  lab-start   - Open split-screen practice mode"
 echo "  lab-help    - Quick Linux command reference"
 echo "  lab-reset   - Restore the practice lab"
 echo
