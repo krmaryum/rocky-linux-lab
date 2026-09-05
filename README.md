@@ -52,6 +52,11 @@ docker pull krmaryum/rocky-linux-lab:4.2.1
 
 ## 2. Run the Lab for the First Time
 
+```PowerShell
+docker run -it --name rocky-linux-lab --hostname rocky-lab krmaryum/rocky-linux-lab:4.2.1
+```
+### OR
+
 ```bash
 docker run -it \
   --name rocky-linux-lab \
